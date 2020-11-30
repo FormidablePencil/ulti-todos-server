@@ -1,0 +1,27 @@
+{
+  "name": "ulti-todos-server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Dennis Aleksandrov",
+  "license": "MIT",
+  "scripts": {
+    "start": "node -r ts-node/register",
+    "watch-node": "nodemon ./src/index.ts",
+    "prebuild": "tslint -c tslint.json -p tsconfig.json --fix",
+    "build": "tsc"
+  },
+  "dependencies": {
+    "@types/mongoose": "^5.10.1",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.10.18",
+    "nodemon": "^2.0.6",
+    "passport": "^0.4.1",
+    "ts-node": "^9.0.0"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.9",
+    "@types/node": "^14.14.10",
+    "@types/typescript": "^2.0.0"
+  }
+}

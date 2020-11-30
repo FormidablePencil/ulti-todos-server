@@ -1,0 +1,11 @@
+POST http://localhost:5001
+Content-Type: application/json
+
+{
+  "username": "hamburgercheese",
+  "password": "hamburgercheese",
+  "room": {
+    "title": "main=room",
+    "users": ["Dennis", "Daniel"]
+  }
+}
