@@ -1,11 +1,20 @@
-POST http://localhost:5001
+POST http://localhost:5001/room
 Content-Type: application/json
 
 {
-  "username": "hamburgercheese",
-  "password": "hamburgercheese",
+  "username": "YourFace",
+  "password": "Cornbread",
   "room": {
     "title": "main=room",
     "users": ["Dennis", "Daniel"]
   }
+}
+
+###
+GET http://localhost:5001/room/users-rooms
+Content-Type: application/json
+
+{
+  "username": "YourFace",
+  "password": "Cornbread"
 }
