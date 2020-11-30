@@ -1,7 +1,7 @@
 import mongoose from 'mongoose'
 const Schema = mongoose.Schema
 
-const RoomSchema = new Schema({/* //* get lists through rooms allthough you get all of your lists you've create as a user */
+const RoomSchema = new Schema({/* //* get lists through rooms although you get all of your lists you've create as a user */
   title: String,
   users: Array,
   keysOfLists: Array,

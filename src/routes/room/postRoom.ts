@@ -4,8 +4,9 @@ import RoomModel from '../../models/room'
 const postRoom = express.Router()
 
 postRoom.post('/', authUser, async (req, res) => {
-  const { username, room: { title, users } } = req.body
-  users.push(username)
+  const { userAccessId, room: { title, users } } = req.body
+  
+  users.push(userAccessId)
   const rooms = new RoomModel({ title, users })
 
   try {
