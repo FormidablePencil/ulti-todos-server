@@ -1,15 +1,17 @@
-/* //! later on, auth will be verified by tokens in bear header instead of passing password in to get requests and stuff */
-
 import UserModel from "../models/user"
+import bcrypt from 'bcrypt'
 
 const authUser = async (req, res, next) => {
-  const { username, password } = req.body
+  const { username, token } = req.body
 
-  const foundUser = await UserModel.findOne({ username })
-  if (password !== foundUser[0].password) {
+  const foundUser: any = await UserModel.findOne({ username })
+  if (!foundUser)
+    return res.status(404).send('user does not exist')
+
+  if (!bcrypt.compare(token, foundUser.password)) {
     return res.status(400).send('incorrect username or password')
   }
-  req.body.userAccessId = foundUser[0].userAccessId
+  req.body.userAccessId = foundUser.userAccessId
   next()
 }
 

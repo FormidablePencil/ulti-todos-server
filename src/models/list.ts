@@ -1,11 +1,16 @@
-import mongoose from 'mongoose'
-const Schema = mongoose.Schema
+import mongoose, { Document, Model, Schema } from 'mongoose'
 
-const ListSchema = new Schema({
-  creator: Number,
+export interface ListModelT {
+  title: string,
+  todos: { [index: number]: string },
+  keysOfLists: { [index: number]: string },
+}
+
+const ListSchema = new mongoose.Schema({
   title: String,
   todos: Array,
+  keysOfLists: Array,
 }, { timestamps: true })
 
-const ListModel = mongoose.model('list', ListSchema)
+const ListModel = mongoose.model<ListModelT & Document>('list', ListSchema)
 export default ListModel

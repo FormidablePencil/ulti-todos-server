@@ -15,7 +15,7 @@ postList.post('/', authUser, async (req, res) => {
     await createdList.save()
     res.status(202).send(createdList)
   } catch (error) {
-    res.status(400).send(error)
+    res.status(500).send(error)
   }
 })
 

@@ -1,29 +1,42 @@
 import express from 'express'
 import UserModel from '../../models/user'
+import checkIfEmailAndUsernameAlreadyExist from './functions/checkIfEmailAndUsernameAlreadyExist'
 import { v4 as uuidv4 } from 'uuid';
+import bcrypt from 'bcrypt'
+import generateStarterData from '../reusables/generateStarterData';
 
 const signUp = express.Router()
 
-signUp.post('/', async (req, res, next) => {
+signUp.post('/signUp', async (req, res, next) => {
   const { username, password, email } = req.body
+  if (!username || !password || !email)
+    return res.status(400).send('missing fields')
 
-  const usernameAlready = await UserModel.findOne({ username })
-  if (usernameAlready[0]) return res.status(400).send('username already exists')
+  const { alreadyExists, response } = await checkIfEmailAndUsernameAlreadyExist(username, email)
+  if (alreadyExists) return res.status(400).send(response)
 
-  const foundExistingUsersByEmail = await UserModel.findOne({ email })
-  if (foundExistingUsersByEmail[0]) return res.status(400).send('an email already is used by another account')
+  const encryptedPw = await bcrypt.hash(password, 10)
 
-  const createdNewUser = new UserModel({ username, password, email, userAccessId: uuidv4() })
+  const createdNewUser: any = new UserModel({
+    username,
+    password: encryptedPw,
+    email,
+    userAccessId: uuidv4()
+  })
 
   try {
     await createdNewUser.save()
   } catch (error) {
-    return res.status(400).send(error)
+    return res.status(500).send(error)
   }
 
   //* create dummy data; 1 room. 1 todo */
+  const { generated, error } = await generateStarterData(createdNewUser.userAccessId)
+  if (!generated) res.status(500).send(error)
 
   res.status(202).send('created new user')
 })
 
 export default signUp
+
+

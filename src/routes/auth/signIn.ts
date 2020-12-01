@@ -4,7 +4,7 @@ import RoomModel from '../../models/room'
 const signIn = express.Router()
 // userAccessId
 
-signIn.post('/', authUser, async (req, res, next) => {
+signIn.post('/signIn', authUser, async (req, res, next) => {
   const { userAccessId } = req.body
 
   const foundRooms = await RoomModel.find({ users: userAccessId })
