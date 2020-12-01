@@ -1,7 +1,7 @@
 ~ You must passing encrypted password everytime you try access data. Later web tokens will be used or better yet google/facebook signing. For now it is what it is.
 ~ trailing commas are not allowed in client.rest
 
-###
+### create new room
 POST http://localhost:5001/room
 Content-Type: application/json
 
@@ -9,16 +9,25 @@ Content-Type: application/json
   "username": "YourFace",
   "password": "Cornbread",
   "room": {
-    "title": "main=room",
-    "users": ["Dennis", "Daniel"]
+    "title": "Title",
+    "users": ["userAccessId", "userAccessId"]
   }
 }
 
-###
+### get user's rooms
 GET http://localhost:5001/room/users-rooms
 Content-Type: application/json
 
 {
   "username": "YourFace",
   "password": "Cornbread"
+}
+
+### get user's lists and rooms
+GET http://localhost:5001/users-lists-and-rooms
+Content-Type: application/json
+
+{
+  "username": "Y1osurFace",
+  "password": "Corsnbread"
 }

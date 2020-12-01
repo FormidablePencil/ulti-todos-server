@@ -1,16 +1,21 @@
 import express from 'express'
 import authUser from '../../middleware/authUser'
-import RoomModel from '../../models/room'
+import RoomModel, { RoomModelT } from '../../models/room'
 const postRoom = express.Router()
 
 postRoom.post('/', authUser, async (req, res) => {
   const { userAccessId, room: { title, users } } = req.body
 
   users.push(userAccessId)
-  const rooms = new RoomModel({ title, users })
+  const newRoom: RoomModelT = {
+    title: title,
+    users: userAccessId,
+    keysOfLists: []
+  }
+  const room = new RoomModel(newRoom)
 
   try {
-    await rooms.save()
+    await room.save()
     res.status(202).send('Saved new room!')
   } catch (error) {
     console.log(error)

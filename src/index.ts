@@ -8,6 +8,7 @@ import getRoomsByUser from './routes/room/getRoomsByUser';
 import postRoom from './routes/room/postRoom';
 import signIn from './routes/auth/signIn';
 import signUp from './routes/auth/signUp';
+import getUsersListsAndRooms from './routes/list/getUsersListsAndRooms';
 
 /* //* don't add auth yet. Create the logic for Daniel do get and push data. Use only for now but later I'll have to get around doing it . */
 
@@ -21,6 +22,7 @@ app.use(express.json())
 app.use('/auth', signIn, signUp)
 app.use('/room', deleteRoom, getRoomsByUser, postRoom)
 app.use('/list', deleteList, postList)
+app.use('/', getUsersListsAndRooms)
 
 mongoose.connect(process.env.MONGO_DB, { useNewUrlParser: true, useUnifiedTopology: true }, () => console.log('connected to db'))
 mongoose.connection

@@ -31,10 +31,10 @@ signUp.post('/signUp', async (req, res, next) => {
   }
 
   //* create dummy data; 1 room. 1 todo */
-  const { generated, error } = await generateStarterData(createdNewUser.userAccessId)
+  const { createdRoom, createdList, generated, error } = await generateStarterData(createdNewUser.userAccessId)
   if (!generated) res.status(500).send(error)
 
-  res.status(202).send('created new user')
+  res.status(202).send({ message: 'created new user', createdRoom, createdList })
 })
 
 export default signUp

@@ -1,5 +1,5 @@
 
-###
+### signin
 POST http://localhost:5001/auth/signin
 Content-Type: application/json
 
@@ -7,12 +7,12 @@ Content-Type: application/json
   "username": "YourFace",
   "password": "Cornbread"
 }
-###
+### signup
 POST http://localhost:5001/auth/signup
 Content-Type: application/json
 
 {
-  "username": "YourFace",
-  "password": "Cornbread",
-  "email": "example@gmail.com"
+  "username": "Y1osurFace",
+  "password": "Corsnbread",
+  "email": "examp1sle@gmail.com"
 }
