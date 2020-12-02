@@ -15,7 +15,7 @@ export interface ListModelT {
 
 const TodoSchema = new mongoose.Schema({
   todo: { type: String, required: true },
-  _id: { type: String, required: false, unique: true },
+  _id: { type: String, required: false },
 })
 
 const ListSchema = new mongoose.Schema({
@@ -27,7 +27,6 @@ const ListSchema = new mongoose.Schema({
   roomIds: {
     type: Array,
     required: true,
-    unique: true,
     validate: [arrayLimitOf1, '{PATH} recedes the limit of 1']
   }
 }, { timestamps: true })

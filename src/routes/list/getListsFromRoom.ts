@@ -7,7 +7,7 @@ const getListsFromRoom = express.Router()
 
 const validateFields = (req, res, next) => {
   const { roomId } = req.body
-  if (!roomId) return missingFields(res)
+  if (!roomId) return missingFields(res, {roomId: ''})
   next()
 }
 
@@ -16,11 +16,8 @@ getListsFromRoom.get('/lists-from-room', authUser, validateFields, async (req, r
 
   const foundRoom = await RoomModel.findOne({ roomId, users: userAccessId })
   if (!foundRoom) res.status(404).send('room not found')
-  /* snippet */
-  res
 
-
-  res.status(200).send()
+  res.status(200).send(foundRoom)
 })
 
 export default getListsFromRoom

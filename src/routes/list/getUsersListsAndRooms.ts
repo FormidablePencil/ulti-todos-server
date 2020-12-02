@@ -6,7 +6,7 @@ import filterAllListsByRoomId from './functions/filterAllListsByRoomId'
 
 const getUsersListsAndRooms = express.Router()
 
-getUsersListsAndRooms.get('/users-lists', authUser, async (req, res) => {
+getUsersListsAndRooms.get('/users-lists-rooms', authUser, async (req, res) => {
   const { userAccessId } = req.body
 
   const usersRooms = await RoomModel.find({ users: userAccessId })

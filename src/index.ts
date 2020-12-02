@@ -1,7 +1,7 @@
 import express from 'express'
 import mongoose from 'mongoose'
 import 'dotenv/config'
-import postList from './routes/list/postList';
+import createList from './routes/list/createList';
 import deleteList from './routes/list/deleteList';
 import leaveRoom from './routes/room/leaveRoom';
 import getRoomsByUser from './routes/room/getRoomsByUser';
@@ -23,7 +23,7 @@ app.use(express.json())
 
 app.use('/auth', signIn, signUp)
 app.use('/room', leaveRoom, getRoomsByUser, createRoom)
-app.use('/list', getListsFromRoom, deleteList, postList, updateTodos)
+app.use('/list', getListsFromRoom, deleteList, createList, updateTodos)
 app.use('/', getUsersListsAndRooms)
 
 mongoose.connect(process.env.MONGO_DB, { useNewUrlParser: true, useUnifiedTopology: true }, () => console.log('connected to db'))

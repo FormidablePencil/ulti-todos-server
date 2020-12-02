@@ -12,7 +12,7 @@ const validateFields = (req, res, next) => {
   next()
 }
 
-updateTodos.post('/updatetodos', authUser, validateFields, async (req, res) => {
+updateTodos.put('/update-todos', authUser, validateFields, async (req, res) => {
   const { listId, roomId, updatedTodosList, userAccessId } = req.body
 
   const userAuthorized = await userAuthorizedRoom(userAccessId, roomId)

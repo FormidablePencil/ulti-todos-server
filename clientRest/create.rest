@@ -1,14 +1,16 @@
-### create new list
+### create new list 
+# missing feilds validator √
+//!
 POST http://localhost:5001/list
 Content-Type: application/json
 
 {
-  "username": "asudssasFace",
+  "username": "asusdssasFace",
   "password": "Corsnd",
   "newList": {
-    "title": "NewTitle",
-    "todos": [{"_id": "Do something", "todo": "anything"}], 
-    "roomId": "9437086d-4ac6-446f-afab-2496b525eaed"
+    "title": "my new todo list",
+    "todos": [{"_id": "D o somethings", "todo": "ansything"}], 
+    "roomId": "738217a4-55f9-455f-ad8d-e319f38235f4"
   }
 }
 
@@ -18,9 +20,10 @@ POST http://localhost:5001/room
 Content-Type: application/json
 
 {
-  "username": "asudssasFace",
+  "username": "asusdssasFace",
   "password": "Corsnd",
   "room": {
-    "title": "Titl1232e12"
+    "title": "another room",
+    "users": []
   }
 }

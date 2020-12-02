@@ -8,10 +8,16 @@ import { missingFields } from '../reusables/responses';
 
 const signUp = express.Router()
 
-signUp.post('/signUp', async (req, res, next) => {
+const validateFields = (req, res, next) => {
   const { username, password, email } = req.body
   if (!username || !password || !email)
-    return missingFields(res)
+    return missingFields(res, { username, password, email })
+  next()
+}
+
+
+signUp.post('/signUp', validateFields, async (req, res, next) => {
+  const { username, password, email } = req.body
 
   const { alreadyExists, response } = await checkIfEmailAndUsernameAlreadyExist(username, email)
   if (alreadyExists) return res.status(400).send(response)

@@ -1,9 +1,11 @@
 ### delete list
+# missing feilds validator √
 DELETE http://10.0.0.7:5001/list
 Content-Type: application/json
 
 {
-  "username": "YousrsFace",
-  "password": "Cosrsnbread",
-  "roomId": "2345"
+  "username": "asusdssasFace",
+  "password": "Corsnd",
+  "roomId": "738217a4-55f9-455f-ad8d-e319f38235f4",
+  "_id": "5fc7ce97183048421fd0d31e"
 }

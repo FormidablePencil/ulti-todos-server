@@ -4,9 +4,9 @@ import ListModel, { ListModelT } from '../../models/list'
 import userAuthorizedRoom from './functions/userAuthorizedRoom'
 import { missingFields } from '../reusables/responses';
 
-const postList = express.Router()
+const createList = express.Router()
 
-const validateFields = (res, req, next) => {
+const validateFields = (req, res, next) => {
   const { newList } = req.body
   if (!newList) return missingFields(res, { newList })
   const { title, todos, roomId } = newList
@@ -14,7 +14,7 @@ const validateFields = (res, req, next) => {
   next()
 }
 
-postList.post('/', authUser, validateFields, async (req, res) => {
+createList.post('/', authUser, validateFields, async (req, res) => {
   const { userAccessId, newList: { title, todos, roomId } } = req.body
 
   const authenticated = await userAuthorizedRoom(userAccessId, roomId)
@@ -35,4 +35,4 @@ postList.post('/', authUser, validateFields, async (req, res) => {
   }
 })
 
-export default postList
+export default createList

@@ -1,27 +1,31 @@
 ### get all user's rooms
+# missing feilds validator √
 GET http://localhost:5001/room/users-rooms
 Content-Type: application/json
 
 {
-  "username": "YousrsFace",
-  "password": "Cosrsnbread"
+  "username": "asusdssasFace",
+  "password": "Corsnd"
 }
 
 ### get lists of the room
-GET http://localhost:5001/room/list/lists-from-room
+# missing feilds validator √
+GET http://localhost:5001/list/lists-from-room
 Content-Type: application/json
 
 {
-  "username": "YousrsFace",
-  "password": "Cosrsnbread"
+  "username": "asusdssasFace",
+  "password": "Corsnd",
+  "roomId": "738217a4-55f9-455f-ad8d-e319f38235f4"
 }
 
 
 ### get all user's lists and rooms
-GET http://localhost:5001/users-lists
+# missing feilds validator √
+GET http://localhost:5001/users-lists-rooms
 Content-Type: application/json
 
 {
-  "username": "YousrsFace",
-  "password": "Cosrsnbread"
+  "username": "asusdssasFace",
+  "password": "Corsnd"
 }

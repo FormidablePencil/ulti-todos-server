@@ -2,20 +2,22 @@
 ~ trailing commas are not allowed in client.rest
 
 ### signin 
+# missing feilds validator √
 POST http://10.0.0.7:5001/auth/signin
 Content-Type: application/json
 
 {
-  "username": "asudssasFace",
+  "username": "asusdssasFace",
   "password": "Corsnd"
 }
 ### signup
 # if email missing 
+# missing feilds validator √
 POST http://10.0.0.7:5001/auth/signup
 Content-Type: application/json
 
 {
-  "username": "asudssasFace",
+  "username": "asusdssasFace",
   "password": "Corsnd",
-  "email": "saesssds"
+  "email": "sasesssds"
 }
