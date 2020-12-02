@@ -6,11 +6,11 @@ const authUser = async (req, res, next) => {
 
   const foundUser: any = await UserModel.findOne({ username })
   if (!foundUser)
-    return res.status(404).send('user does not exist')
+    return res.status(404).send('incorrect username or password')
 
-  if (!bcrypt.compare(password, foundUser.password))
+  if (!await bcrypt.compare(password, foundUser.password))
     return res.status(400).send('incorrect username or password')
-
+    
   req.body.userAccessId = foundUser.userAccessId
   next()
 }

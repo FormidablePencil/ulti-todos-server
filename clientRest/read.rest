@@ -1,0 +1,27 @@
+### get all user's rooms
+GET http://localhost:5001/room/users-rooms
+Content-Type: application/json
+
+{
+  "username": "YousrsFace",
+  "password": "Cosrsnbread"
+}
+
+### get lists of the room
+GET http://localhost:5001/room/list/lists-from-room
+Content-Type: application/json
+
+{
+  "username": "YousrsFace",
+  "password": "Cosrsnbread"
+}
+
+
+### get all user's lists and rooms
+GET http://localhost:5001/users-lists
+Content-Type: application/json
+
+{
+  "username": "YousrsFace",
+  "password": "Cosrsnbread"
+}

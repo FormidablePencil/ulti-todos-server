@@ -1,0 +1,13 @@
+### leave room
+PUT http://localhost:5001/room/leave
+Content-Type: application/json
+
+{
+  "username": "YousrsFace",
+  "password": "Cosrsnbread",
+  "roomId": "cac5957b-1edf-4068-965b-98fbdf389a47"
+}
+
+### update todosList
+PUT http://localhost:5001/list/updatetodos
+Content-Type: application/json

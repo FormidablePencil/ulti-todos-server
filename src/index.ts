@@ -3,12 +3,14 @@ import mongoose from 'mongoose'
 import 'dotenv/config'
 import postList from './routes/list/postList';
 import deleteList from './routes/list/deleteList';
-import deleteRoom from './routes/room/deleteRoom';
+import leaveRoom from './routes/room/leaveRoom';
 import getRoomsByUser from './routes/room/getRoomsByUser';
-import postRoom from './routes/room/postRoom';
+import createRoom from './routes/room/createRoom';
 import signIn from './routes/auth/signIn';
 import signUp from './routes/auth/signUp';
 import getUsersListsAndRooms from './routes/list/getUsersListsAndRooms';
+import updateTodos from './routes/list/updateTodos';
+import getListsFromRoom from './routes/list/getListsFromRoom';
 
 /* //* don't add auth yet. Create the logic for Daniel do get and push data. Use only for now but later I'll have to get around doing it . */
 
@@ -20,8 +22,8 @@ const app = express()
 app.use(express.json())
 
 app.use('/auth', signIn, signUp)
-app.use('/room', deleteRoom, getRoomsByUser, postRoom)
-app.use('/list', deleteList, postList)
+app.use('/room', leaveRoom, getRoomsByUser, createRoom)
+app.use('/list', getListsFromRoom, deleteList, postList, updateTodos)
 app.use('/', getUsersListsAndRooms)
 
 mongoose.connect(process.env.MONGO_DB, { useNewUrlParser: true, useUnifiedTopology: true }, () => console.log('connected to db'))

@@ -1,18 +1,21 @@
+~ You must pass encrypted password everytime you try access data. Later web tokens will be used or better yet google/facebook signing. For now it is what it is.
+~ trailing commas are not allowed in client.rest
 
-### signin
-POST http://localhost:5001/auth/signin
+### signin 
+POST http://10.0.0.7:5001/auth/signin
 Content-Type: application/json
 
 {
-  "username": "YourFace",
-  "password": "Cornbread"
+  "username": "asudssasFace",
+  "password": "Corsnd"
 }
 ### signup
-POST http://localhost:5001/auth/signup
+# if email missing 
+POST http://10.0.0.7:5001/auth/signup
 Content-Type: application/json
 
 {
-  "username": "Y1osurFace",
-  "password": "Corsnbread",
-  "email": "examp1sle@gmail.com"
+  "username": "asudssasFace",
+  "password": "Corsnd",
+  "email": "saesssds"
 }

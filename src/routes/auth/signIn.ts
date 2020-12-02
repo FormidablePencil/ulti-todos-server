@@ -1,16 +1,19 @@
 import express from 'express'
 import authUser from '../../middleware/authUser'
+import ListModel from '../../models/list'
 import RoomModel from '../../models/room'
-const signIn = express.Router()
-// userAccessId
+import filterAllListsByRoomId from '../list/functions/filterAllListsByRoomId'
 
-signIn.post('/signIn', authUser, async (req, res, next) => {
+const signIn = express.Router()
+
+signIn.post('/signIn', authUser, async (req, res) => {
   const { userAccessId } = req.body
 
-  const foundRooms = await RoomModel.find({ users: userAccessId })
-  const foundLists = await RoomModel.find({ users: userAccessId })
+  const usersRooms = await RoomModel.find({ users: userAccessId })
+  const allLists = await ListModel.find()
+  const allListsFromRoom = filterAllListsByRoomId(usersRooms, allLists)
 
-  res.status(202).send({ foundRooms, foundLists })
+  res.status(202).send({ usersRooms, allListsFromRoom })
 })
 
 export default signIn

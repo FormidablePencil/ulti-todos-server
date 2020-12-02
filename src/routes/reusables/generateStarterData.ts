@@ -1,21 +1,21 @@
 import ListModel, { ListModelT } from "../../models/list"
 import RoomModel from "../../models/room"
+import { v4 as uuidv4 } from 'uuid';
 
 const generateStarterData = async (createdUserAccessId) => {
+  const uuid = uuidv4()
   try {
     const newStarterList: ListModelT = {
       title: 'For starter',
-      todos: ['Fry inviting someone into your room'],
-      tag: {
-        creator: createdUserAccessId,
-      }
+      todos: [{ todo: 'Try inviting someone into your room', _id: uuidv4() }],
+      roomIds: uuid
     }
     const createdList = new ListModel(newStarterList)
 
     const newStarterRoom = {
       title: 'Starter',
       users: [createdUserAccessId],
-      keysOfLists: [createdList._id],
+      roomId: uuid
     }
     const createdRoom = new RoomModel(newStarterRoom)
 

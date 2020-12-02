@@ -4,13 +4,14 @@ import checkIfEmailAndUsernameAlreadyExist from './functions/checkIfEmailAndUser
 import { v4 as uuidv4 } from 'uuid';
 import bcrypt from 'bcrypt'
 import generateStarterData from '../reusables/generateStarterData';
+import { missingFields } from '../reusables/responses';
 
 const signUp = express.Router()
 
 signUp.post('/signUp', async (req, res, next) => {
   const { username, password, email } = req.body
   if (!username || !password || !email)
-    return res.status(400).send('missing fields')
+    return missingFields(res)
 
   const { alreadyExists, response } = await checkIfEmailAndUsernameAlreadyExist(username, email)
   if (alreadyExists) return res.status(400).send(response)
@@ -30,7 +31,6 @@ signUp.post('/signUp', async (req, res, next) => {
     return res.status(500).send(error)
   }
 
-  //* create dummy data; 1 room. 1 todo */
   const { createdRoom, createdList, generated, error } = await generateStarterData(createdNewUser.userAccessId)
   if (!generated) res.status(500).send(error)
 

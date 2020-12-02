@@ -1,0 +1,9 @@
+### delete list
+DELETE http://10.0.0.7:5001/list
+Content-Type: application/json
+
+{
+  "username": "YousrsFace",
+  "password": "Cosrsnbread",
+  "roomId": "2345"
+}
