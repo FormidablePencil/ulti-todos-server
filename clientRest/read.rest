@@ -8,8 +8,17 @@ Content-Type: application/json
   "password": "Corsnd"
 }
 
-### get lists of the room
-# missing feilds validator √
+### get specfic room
+GET http://localhost:5001/room
+Content-Type: application/json
+
+{
+  "username": "asusdssasFace",
+  "password": "Corsnd",
+  "roomId": "738217a4-55f9-455f-ad8d-e319f38235f4"
+}
+
+### get lists by room
 GET http://localhost:5001/list/lists-from-room
 Content-Type: application/json
 
@@ -26,6 +35,6 @@ GET http://localhost:5001/users-lists-rooms
 Content-Type: application/json
 
 {
-  "username": "asusdssasFace",
-  "password": "Corsnd"
+  "username": "pie",
+  "password": "pie"
 }

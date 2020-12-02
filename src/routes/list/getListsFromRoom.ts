@@ -1,23 +1,27 @@
 import express from 'express'
 import authUser from '../../middleware/authUser'
-import RoomModel from '../../models/room'
+import ListModel from '../../models/list';
+import RoomModel, { RoomModelT } from '../../models/room'
 import { missingFields } from '../reusables/responses';
 
-const getListsFromRoom = express.Router()
+const getRoom = express.Router()
 
 const validateFields = (req, res, next) => {
   const { roomId } = req.body
-  if (!roomId) return missingFields(res, {roomId: ''})
+  if (!roomId) return missingFields(res, { roomId: '' })
   next()
 }
 
-getListsFromRoom.get('/lists-from-room', authUser, validateFields, async (req, res) => {
+getRoom.get('/lists-from-room', authUser, validateFields, async (req, res) => {
   const { roomId, userAccessId } = req.body
 
-  const foundRoom = await RoomModel.findOne({ roomId, users: userAccessId })
-  if (!foundRoom) res.status(404).send('room not found')
+  const foundRoom: any = await RoomModel.findOne({ roomId, users: userAccessId })
+  if (!foundRoom) return res.status(401).send('Unauthorized')
+  
+  const allListsByRoomId = await ListModel.find({ roomIds: roomId })
+  if (!allListsByRoomId[0]) return res.status(204).send('No content')
 
-  res.status(200).send(foundRoom)
+  res.status(200).send(allListsByRoomId)
 })
 
-export default getListsFromRoom
+export default getRoom

@@ -1,6 +1,4 @@
 ### create new list 
-# missing feilds validator √
-//!
 POST http://localhost:5001/list
 Content-Type: application/json
 
