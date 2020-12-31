@@ -2,7 +2,7 @@
 
 This app was made in collaborations with my brother Daniel Aleksandrov for his software engineering pursuits.
 
-Link to client server at: https://github.com/FormidablePencil/ulti-todos-server
+Link to client server at: https://github.com/DanielAleks/todoList
 
 ### Technologies utilized
 
